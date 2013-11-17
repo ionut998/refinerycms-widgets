@@ -1,0 +1,28 @@
+sk:
+  refinery:
+    plugins:
+      widgets:
+        title: Widgets
+    widgets:
+      admin:
+        widgets:
+          actions:
+            create_new: Pridať Widget
+            reorder: Preusporiadať Widgets
+            reorder_done: Koniec radenia Widgets
+          records:
+            title: Widgets
+            sorry_no_results: Ľutujeme, ale neboli nájdené žiadne výsledky.
+            no_items_yet: Nie sú vytvorené žiadne Widgets. Kliknite na "Pridať Widget" pre pridanie prvého widget.
+          widget:
+            view_live_html: Zobraziť náhľad widget<br/><em>(otvorí sa v novom okne)</em>
+            edit: Upraviť widget
+            delete: Zmazať widget
+      widgets:
+        show:
+          other: Daľšie Widgets
+  activerecord:
+    attributes:
+      'refinery/widgets/widget':
+        title: Title
+        body: Body

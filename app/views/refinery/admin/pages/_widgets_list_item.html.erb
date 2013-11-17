@@ -1,0 +1,7 @@
+<li <%="id=pages_widget_#{page_widget.id}"%> class='clearfix record <%= cycle('on', 'off') %>' >
+  <span class='title'>
+    <%= page_widget.widget.title %>
+  </span>
+  <span class='actions snippets_actions'>
+    <%= link_to refinery_icon_tag('delete.png'), "/refinery/widgets/unassign/#{page_widget.id}?page=#{@page.id}", :title => 'Remove' %>   </span>
+</li>

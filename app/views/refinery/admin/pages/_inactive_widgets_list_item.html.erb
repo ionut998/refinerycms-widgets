@@ -1,0 +1,21 @@
+<% pages_widget_id = (Refinery::PagesWidgets::PagesWidget.where(:page_id => @page.id, :widget_id => widget.id).first.id rescue 0)%>
+<li <%="id=pages_widget_#{pages_widget_id}" if (pages_widget_id!=0)%> class='clearfix record <%= cycle('on', 'off') %>' >
+  <span class='title'>
+    <%= widget.title %>
+  </span>
+  <span class='actions widgets_actions'>
+   <% if (@page.view_template == 'layout_3_columns') %>
+        <% if(active!=true) %>
+          <%= link_to refinery_icon_tag('add.png'), "/refinery/widget/assign/#{widget.id}?page=#{@page.id}",:title => 'Add', :class => 'widget_add_button' %>
+        <span class="widget_add_tooltip" style="display:none">       
+          <%= link_to (refinery_icon_tag('add.png') + 'add to right').html_safe, "/refinery/widgets/assign/#{widget.id}?page=#{@page.id}&location=right",:title => 'Add to right' %>
+          <%= link_to ('add to left' + refinery_icon_tag('add.png')).html_safe, "/refinery/widgets/assign/#{widget.id}?page=#{@page.id}&location=left",:title => 'Add to left' %>
+        </span>
+        <% else  %>
+        <%= link_to refinery_icon_tag('delete.png'), "/refinery/widgets/unassign/#{widget.id}?page=#{@page.id}", :title => 'Remove' %>
+        <% end %>
+    <% else %>
+        <%= link_to ('add to left' + refinery_icon_tag('add.png')).html_safe, "/refinery/widgets/assign/#{widget.id}?page=#{@page.id}&location=left",:title => 'Add to left' %>
+    <% end %>
+  </span>
+</li>

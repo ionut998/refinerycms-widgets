@@ -1,0 +1,29 @@
+es:
+  refinery:
+    plugins:
+      widgets:
+        title: Widgets
+#        article: masculino/femenino
+    widgets:
+      admin:
+        widgets:
+          actions:
+            create_new: Crear nuevo widget
+            reorder: Reordenar widgets
+            reorder_done: Reordenación de widgets completada
+          records:
+            title: Widgets
+            sorry_no_results: Lo siento, no hay resultados
+            no_items_yet: No hay widgets todavía. Pulsa en "Crear nuevo Widget" para crear tu primer widget.
+          widget:
+            view_live_html: Ver este widget como abierto al público <br/><em>(abre en ventana nueva)</em>
+            edit: Editar este widget
+            delete: Borrar este widget para siempre
+      widgets:
+        show:
+          other: Otros widgets
+  activerecord:
+    attributes:
+      'refinery/widgets/widget':
+        title: Title
+        body: Body

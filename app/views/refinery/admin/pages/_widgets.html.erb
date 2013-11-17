@@ -1,0 +1,82 @@
+<% if @page.new_record? %>
+  <div class="msg alert">Please save the page before </div>
+<% else %>
+  <div>
+    <div style="float:left"><h2>Page Snippets</h2></div>
+
+    <div class="clearfix"></div>
+  </div>
+
+  <script type="text/javascript" src="/assets/refinery/nestedsortables.js"></script>
+  <script type="text/javascript" src="/assets/refinery/serializelist.js"></script>
+
+  <script>
+    $(document).ready(function(){
+      list_reorder.update_url     = '/refinery/pages_snippets/update_positions';
+      list_reorder.sortable_list  = $('#sortable_list_left, .sortable_list');
+      list_reorder.tree           = false;
+      list_reorder.init();
+      
+      list_reorder2.update_url     = '/refinery/pages_snippets/update_positions';
+      list_reorder2.sortable_list  = $('#sortable_list_right, .sortable_list');
+      list_reorder2.tree           = false;
+      list_reorder2.init();
+    });
+  </script>
+
+
+
+  <div id="page_snipets" class="part-snippets">
+    <div class="page-snippets block" id="records">
+
+      <% left_snip = @page.pages_widgets.where(:location => 'left') %>
+      <% right_snip = @page.pages_widgets.where(:location => 'right') %>
+
+      <% if !left_snip.empty? %>
+        <div id="page_active_snippets_left">
+
+          <h3>Active snippets left
+            <a id="reorder_action" href="/refinery/pages_snippets">
+              <img src="/assets/refinery/icons/arrow_switch.png" alt="" />
+            </a>
+            <a id="reorder_action_done" class="reorder_icon" style="display: none;" onClick="$('#reorder_action').show();$('#reorder_action_done').hide();" href="/refinery/pages_snippets">
+              <img src="/assets/refinery/icons/accept.png" alt="" />
+            </a>
+          </h3>
+          <ul  id="sortable_list_left" class="ui-sortable">
+            <%= render :partial => 'widgets_list_item', :collection => left_wid, :locals => {:active => true}, :as => :page_widget %>
+          </ul>
+        </div>
+      <% end %>
+
+      <% if (!right_snip.empty? && @page.view_template == 'layout_3_columns') %>
+        <div id="page_active_snippets_right">
+          <h3>Active snippets right
+            <a id="reorder_action2" href="/refinery/pages_snippets">
+              <img src="/assets/refinery/icons/arrow_switch.png" alt="" />
+            </a>
+            <a id="reorder_action_done2" style="display: none;" onClick="$('#reorder_action2').show();$('#reorder_action_done2').hide();"href="/refinery/pages_snippets">
+              <img src="/assets/refinery/icons/accept.png" alt="" />
+            </a>
+          </h3>         
+          <ul id="sortable_list_right" class="ui-sortable">
+            <%= render :partial => 'widgets_list_item', :collection => right_wid, :locals => {:active => true}, :as => :page_widgets %>
+          </ul> 
+        </div>
+      <% end %>
+
+      <div class="clearfix"></div>
+       
+      <% snipp = Refinery::Widgets::Widget.inactive(@page.id) %>  
+      <% if !snipp.empty? %>
+        <h3>Inactive Widgets</h3>
+        <ul class="inactive-snippets">
+          <%= render :partial => 'inactive_snippets_list_item', :collection => snipp, :locals => {:active => false}, :as => :snippet %>
+        </ul>
+      <% end %>
+
+    </div>
+
+  </div>
+
+<% end %>

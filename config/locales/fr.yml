@@ -1,0 +1,28 @@
+fr:
+  refinery:
+    plugins:
+      widgets:
+        title: Widgets
+    widgets:
+      admin:
+        widgets:
+          actions:
+            create_new: Créer un(e) nouve(au/l/lle) Widget
+            reorder: Réordonner les Widgets
+            reorder_done: Fin de réordonnancement des Widgets
+          records:
+            title: Widgets
+            sorry_no_results: "Désolé ! Aucun résultat."
+            no_items_yet: 'Il n''y a actuellement aucun(e) Widget. Cliquer sur "Créer un(e) nouve(au/l/lle) Widget" pour créer votre premi(er/ère) widget.'
+          widget:
+            view_live_html: Voir ce(t/tte) widget <br/><em>(Ouvre une nouvelle fenêtre)</em>
+            edit: Modifier ce(t/tte) widget
+            delete: Supprimer définitivement ce(t/tte) widget
+      widgets:
+        show:
+          other: Autres Widgets
+  activerecord:
+    attributes:
+      'refinery/widgets/widget':
+        title: Title
+        body: Body
